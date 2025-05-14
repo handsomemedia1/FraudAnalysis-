@@ -38,3 +38,5 @@ Edit the `config\settings.json` file to specify:
 
 ![Dashboard Screenshot]
 ![image](https://github.com/user-attachments/assets/2406fcee-2212-4adb-b94e-340af756719a)
+![image](https://github.com/user-attachments/assets/4746f4b8-5297-4ba3-ad4a-2b19f79eb9c6)
+

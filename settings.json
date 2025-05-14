@@ -1,0 +1,67 @@
+{
+    "Dashboard":  {
+                      "RefreshInterval":  60,
+                      "Port":  10000
+                  },
+    "CollectionFrequency":  60,
+    "DataSources":  {
+                        "Custom":  {
+                                       "Sources":  [
+
+                                                   ],
+                                       "Enabled":  true
+                                   },
+                        "SQL":  {
+                                    "Servers":  [
+                                                    {
+                                                        "Query":  "SELECT * FROM sys.fn_get_audit_file(\u0027*\u0027, NULL, NULL)",
+                                                        "Database":  "*",
+                                                        "Name":  "*",
+                                                        "DiscoveryEnabled":  true
+                                                    }
+                                                ],
+                                    "Enabled":  true
+                                },
+                        "Network":  {
+                                        "Devices":  [
+                                                        {
+                                                            "Command":  "show log",
+                                                            "Name":  "*",
+                                                            "DiscoverySubnet":  "192.168.1.0/24",
+                                                            "Type":  "SSH"
+                                                        }
+                                                    ],
+                                        "DiscoveryEnabled":  true,
+                                        "Enabled":  true
+                                    },
+                        "Windows":  {
+                                        "DiscoveryEnabled":  true,
+                                        "EventLogs":  [
+                                                          "*"
+                                                      ],
+                                        "MaxEvents":  1000,
+                                        "Enabled":  true
+                                    }
+                    },
+    "LogRepository":  "C:\\FraudAnalysis\\Logs",
+    "ReportPath":  "C:\\FraudAnalysis\\Reports",
+    "Rules":  [
+                  {
+                      "TimeThresholdSeconds":  3,
+                      "Name":  "Rapid Cross-System Access",
+                      "Severity":  "High"
+                  },
+                  {
+                      "EndHour":  5,
+                      "StartHour":  22,
+                      "Name":  "After-Hours Database Access",
+                      "Severity":  "Medium"
+                  },
+                  {
+                      "MinFailedAttempts":  3,
+                      "Name":  "Failed Login Followed By Success",
+                      "TimeThresholdMinutes":  5,
+                      "Severity":  "High"
+                  }
+              ]
+}
